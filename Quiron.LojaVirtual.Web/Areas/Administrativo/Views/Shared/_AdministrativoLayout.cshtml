@@ -11,10 +11,13 @@
     <script src="~/Scripts/jquery-1.10.2.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
 
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jQueryFixes.js"></script>
+
 </head>
 <body>
     <div>
-
         @if (TempData["mensagem"] != null)
         {
             <div class="alert alert-success">@TempData["mensagem"]</div>
