@@ -40,13 +40,29 @@
             var url = "Administrativo/Produto/Excluir/"
             var id = $(".modal-body input[type=hidden]").val();
 
-            var rowNo = "row" + id;
+            var rowNo = "#row-" + id;
 
             $.ajax({
-
+                url: url,
+                type: 'post',
+                datatype: 'json',
+                data: { produtoId: id },
+                beforeSend: function () {
+                    var loading = "<span><em>Excluindo</em>&nbsp;<i class='glyphicon glyphicon-refresh icon-refresh-animate'></i></span>";
+                    $('#deleteModal .modal-header h4').after(loading);
+                },
+                success: function () {
+                    $('#deleteModal').modal('hide');
+                    $(rowNo).animate({ opacity: 0.0 }, 400, function () {
+                        $(rowNo).remove();
+                    });
+                },
+                complete: function (data) {
+                    $("#divexcluir").empty();
+                    $("#divexcluir").addClass("alert alert-success");
+                    $("#divexcluir").html(data.responseText);
+                }
             })
-
-            alert(rowNo);
         });
     });
 
