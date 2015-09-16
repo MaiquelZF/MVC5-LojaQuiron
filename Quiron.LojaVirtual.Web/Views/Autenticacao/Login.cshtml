@@ -48,6 +48,7 @@
 
                         @using (Html.BeginForm("Login", "Autenticacao", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-signin" }))
                         {
+                            @Html.ValidationSummary();
                             <fieldset>
                                 <div class="row">
                                     <div class="center-block">
@@ -71,7 +72,7 @@
                                                 <span class="input-group-addon">
                                                     <i class="glyphicon glyphicon-lock"></i>
                                                 </span>
-                                                @Html.TextBoxFor(model => model.Senha, new { @class = "form-control", placeholder = "Informe sua Senha" })
+                                                @Html.PasswordFor(model => model.Senha, new { @class = "form-control", placeholder = "Informe sua Senha" })
                                                 @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
